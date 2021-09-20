@@ -13,7 +13,7 @@ const HomeScreen = ({navigation}) => {
         ItemSeparatorComponent={() => <Divider />}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate('ChatScreen')}
+            onPress={() => navigation.navigate('Root', { screen: 'ChatScreen' })}
           >
             <List.Item
               title={item.name}

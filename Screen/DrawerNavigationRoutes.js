@@ -65,11 +65,10 @@ const settingScreenStack = ({navigation}) => {
   );
 };
 
-const chatScreenStack = ({navigation}) => {
-    return (
-      <Stack.Navigator
-        initialRouteName="ChatScreen"
-        screenOptions={{
+function Root() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="ChatScreen"  screenOptions={{
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -80,17 +79,11 @@ const chatScreenStack = ({navigation}) => {
           headerTitleStyle: {
             fontWeight: 'bold', //Set Header text style
           },
-        }}>
-        <Stack.Screen
-          name="ChatScreen"
-          component={ChatScreen}
-          options={{
-            title: 'Chat', //Set Header Title
-          }}
-        />
-      </Stack.Navigator>
-    );
-  };
+        }} 
+        component={ChatScreen} />
+    </Stack.Navigator>
+  );
+}
 
 const DrawerNavigatorRoutes = (props) => {
   return (
@@ -115,11 +108,7 @@ const DrawerNavigatorRoutes = (props) => {
         options={{drawerLabel: 'Settings'}}
         component={settingScreenStack}
       />
-      <Drawer.Screen
-        name="chatScreenStack"
-        options={{drawerLabel: 'Chat'}}
-        component={chatScreenStack}
-      />
+      {/* <Drawer.Screen name="Root" component={Root} /> */}
     </Drawer.Navigator>
   );
 };

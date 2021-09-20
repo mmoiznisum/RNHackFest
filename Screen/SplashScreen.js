@@ -1,10 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  ActivityIndicator,
-  View,
-  StyleSheet,
-  Image
-} from 'react-native';
+import {ActivityIndicator, View, StyleSheet, Text} from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -18,20 +13,25 @@ const SplashScreen = ({navigation}) => {
       //Check if user_id is set or not
       //If not then send for Authentication
       //else send to Home Screen
-      AsyncStorage.getItem('user_id').then((value) =>
-        navigation.replace(
-          value === null ? 'Auth' : 'DrawerNavigationRoutes'
-        ),
+      AsyncStorage.getItem('user_id').then(value =>
+        navigation.replace(value === null ? 'Auth' : 'DrawerNavigationRoutes'),
       );
     }, 5000);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Image
-        //source={require('../Image/aboutreact.png')}
-        style={{width: '90%', resizeMode: 'contain', margin: 30}}
-      />
+      <Text
+        style={{
+          height: 100,
+          fontSize: 24,
+          fontWeight: 'bold',
+          //resizeMode: 'contain',
+          color: 'white',
+        }}>
+        {' '}
+        TRAVIS CHAT BOT
+      </Text>
       <ActivityIndicator
         animating={animating}
         color="#FFFFFF"
